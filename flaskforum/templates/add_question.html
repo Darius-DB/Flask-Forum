@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <section class="section-booking bg1-pattern p-t-100 p-b-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 p-b-30">
+                    <div class="t-center">
+                        <span class="tit2 t-center">
+                            Add Your Question
+                        </span>
+
+                        <h3 class="tit3 t-center m-b-35 m-t-2">
+                            Ask The Community For Help
+                        </h3>
+                    </div>
+
+                    <form class="wrap-form-booking" action="" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Date -->
+                                <span class="txt9">
+                                    {{ form.title.label }}
+                                </span>
+
+                                <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    {% if form.title.errors %}
+                                        {{ form.title(class="bo-rad-10 sizefull txt10 p-l-20  is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.title.errors %}
+                                                <span>{{ error }}</span><br>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.title(class="bo-rad-10 sizefull txt10 p-l-20 ", placeholder='Title') }}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Time -->
+                                <span class="txt9">
+                                    {{ form.tag_1.label }}
+                                </span>
+
+                                <div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    <!-- Select2 -->
+                                    {% if form.tag_1.errors %}
+                                        {{ form.tag_1(class="bo-rad-10 sizefull txt10 p-l-20  is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.tag_1.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.tag_1(class="bo-rad-10 sizefull txt10 p-l-20 ", placeholder='Choose Category') }}
+                                    {% endif %}
+                                </div>
+
+                                <!-- People -->
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <!-- Name -->
+                                <span class="txt9">
+                                    {{ form.content.label }}
+                                </span>
+
+                                <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    {% if form.content.errors %}
+                                        {{ form.content(class="bo-rad-10 sizefull txt10 p-l-20  is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.content.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.content(class="bo-rad-10 sizefull txt10 p-l-20 ", placeholder='Content') }}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Phone -->
+                                <span class="txt9">
+                                    {{ form.tag_2.label }}
+                                </span>
+
+                                <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    {% if form.tag_2.errors %}
+                                        {{ form.tag_2(class="bo-rad-10 sizefull txt10 p-l-20  is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.tag_2.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.tag_2(class="bo-rad-10 sizefull txt10 p-l-20 ", placeholder='Choose Category') }}
+                                    {% endif %}
+                                </div>
+
+                                <!-- content -->
+
+                            </div>
+                        </div>
+
+                        <div class="wrap-btn-booking flex-c-m m-t-6">
+                            <!-- Button3 -->
+
+                            {{ form.submit(class="btn3 flex-c-m size13 txt11 trans-0-4") }}
+
+                        </div>
+                    </form>
+                    
+                </div>
+
+                <div class="col-lg-6 p-b-30 p-t-18">
+                    <div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
+                        <img src="static/images/booking-01.jpg" alt="IMG-OUR">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

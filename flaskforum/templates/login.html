@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <section class="section-booking bg1-pattern p-t-100 p-b-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 p-b-30">
+                    <div class="t-center">
+                        <span class="tit2 t-center">
+                            Log In
+                        </span>
+
+                        <h3 class="tit3 t-center m-b-35 m-t-2">
+                            Enter into your account
+                        </h3>
+                    </div>
+
+                    <form class="wrap-form-booking" action="" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Date -->
+                                <span class="txt9">
+                                    {{ form.email.label }}
+                                </span>
+
+                                <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    {% if form.email.errors %}
+                                        {{ form.email(class="bo-rad-10 sizefull txt10 p-l-20  is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.email(class="bo-rad-10 sizefull txt10 p-l-20 ", placeholder='Email') }}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Time -->
+                                
+
+                                <!-- People -->
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <!-- Name -->
+                                <span class="txt9">
+                                    {{ form.password.label }}
+                                </span>
+
+                                <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    {% if form.password.errors %}
+                                        {{ form.password(class="bo-rad-10 sizefull txt10 p-l-20  is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.password.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.password(class="bo-rad-10 sizefull txt10 p-l-20 ", placeholder='Password') }}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Phone -->
+                                
+
+                                <!-- password -->
+
+                            </div>
+                        </div>
+
+                        <div class="wrap-btn-booking flex-c-m m-t-6">
+                            <!-- Button3 -->
+
+                            {{ form.submit(class="btn3 flex-c-m size13 txt11 trans-0-4") }}
+
+                        </div>
+                        <small class="text-muted ml-2">
+                            <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
+                        </small>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up</a>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 p-b-30 p-t-18">
+                    <div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
+                        <img src="static/images/booking-01.jpg" alt="IMG-OUR">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <section class="section-booking bg1-pattern p-t-100 p-b-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 p-b-30">
+                    <div class="t-center">
+                        <span class="tit2 t-center">
+                            Reset Password
+                        </span>
+
+                    </div>
+
+                    <form class="wrap-form-booking" action="" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+               
+                            <div class="col-md-12">
+                                <!-- Name -->
+                                <span class="txt9">
+                                    {{ form.email.label }}
+                                </span>
+
+                                <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    {% if form.email.errors %}
+                                        {{ form.email(class="bo-rad-10 sizefull txt10 p-l-20  is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.email(class="bo-rad-10 sizefull txt10 p-l-20 ", placeholder='Email') }}
+                                    {% endif %}
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="wrap-btn-booking flex-c-m m-t-6">
+                            <!-- Button3 -->
+
+                            {{ form.submit(class="btn3 flex-c-m size13 txt11 trans-0-4") }}
+
+                        </div>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            Already Have An Account? <a class="ml-2" href="">Sign In</a>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 p-b-30 p-t-18">
+                    <div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
+                        <img src="static/images/booking-01.jpg" alt="IMG-OUR">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

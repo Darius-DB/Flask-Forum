@@ -1,0 +1,124 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+	<!-- Title Page -->
+	<!--section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(static/images/bg-title-page-03.jpg);">
+		<h2 class="tit6 t-center">
+			Blog
+		</h2>
+	</section-->
+
+
+	<!-- Content page -->
+	<section>
+		<!--div class="bread-crumb bo5-b p-t-17 p-b-17">
+			<div class="container">
+				<a href="index.html" class="txt27">
+					Home
+				</a>
+
+				<span class="txt29 m-l-10 m-r-10">/</span>
+
+				<span class="txt29">
+					Blog
+				</span>
+			</div>
+		</div-->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-lg-9">
+					<div class="p-t-80 p-b-124 bo5-r h-full p-r-50 p-r-0-md bo-none-md">
+						<!-- Block4 -->
+						{% for question in questions.items %}
+							<div class="blo4 p-b-63">
+								
+
+								<div class="text-blo4 p-t-33">
+									<h4 class="p-b-16">
+										<a href="{{ url_for('question', question_id=question.id) }}" class="tit9">{{ question.title }}</a>
+									</h4>
+
+									<div class="txt32 flex-w p-b-24">
+										<span>
+											by {{ question.author.username }}
+											<span class="m-r-6 m-l-4">|</span>
+										</span>
+
+										<span>
+											{{ question.date_added.strftime('%Y-%m-%d') }}
+											<span class="m-r-6 m-l-4">|</span>
+										</span>
+
+										<span>
+											{{ question.tag_1 }}, {{ question.tag_2 }}
+											<span class="m-r-6 m-l-4">|</span>
+										</span>
+
+										<span>
+											{{ question.answers.total }} Answers
+										</span>
+									</div>
+
+									<p>
+										{{ question.content|truncate(500) }}
+									</p>
+
+									<a href="{{ url_for('question', question_id=question.id) }}" class="dis-block txt4 m-t-30">
+										Continue Reading
+										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+							<hr>
+						{% endfor %}
+
+						<!-- Pagination -->
+						<div class="pagination flex-l-m flex-w m-l--6 p-t-25">
+
+							{% for page_num in questions.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+								{% if page_num %}
+									{% if questions.page == page_num %}
+										<a href="{{ url_for('home', page=page_num) }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ page_num }}</a>
+									{% else %}
+										<a href="{{ url_for('home', page=page_num) }}" class="item-pagination flex-c-m trans-0-4">{{ page_num }}</a>
+									{% endif %}
+								{% else %}
+									...
+								{% endif %}
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-lg-3">
+					<div class="sidebar2 p-t-80 p-b-80 p-l-20 p-l-0-md p-t-0-md">
+						<!-- Search -->
+						
+
+						<!-- Categories -->
+						<div class="categories">
+							
+						</div>
+
+						<!-- Most Popular -->
+						<div class="popular">
+							
+
+						</div>
+
+
+						<!-- Archive -->
+						<div class="archive">
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock content %}
+
+

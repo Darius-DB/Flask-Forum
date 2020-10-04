@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <section class="section-booking bg1-pattern p-t-100 p-b-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 p-b-30">
+                    <div class="t-center">
+                        <span class="tit2 t-center">
+                            {{ answer.question.title }}
+                        </span>
+    
+                        <h3 class="tit3 t-center m-b-35 m-t-2">
+                            Edit your answer
+                        </h3>
+                    </div>
+
+                    <form class="leave-comment p-t-10" action="" method="POST">
+                        {{ form.hidden_tag() }}
+                        <h4 class="txt33 p-b-14">
+                            Answer
+                        </h4>
+                    
+                        <p>
+                            You must be authenticated for answering questions
+                        </p>
+                    
+                        {% if form.content.errors %}
+                            {{ form.content(class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40  is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.content.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.content(class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40", placeholder='Answer') }}
+                        {% endif %}
+                    
+                        <!-- Button3 -->
+                    
+                        {{ form.submit(class='btn3 flex-c-m size31 txt11 trans-0-4') }}
+                    </form>
+                    <br>
+                        <a href="{{ url_for('delete_answer', answer_id=answer.id) }}" class="btn-danger flex-c-m size31 txt11 trans-0-4">Delete</a>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
