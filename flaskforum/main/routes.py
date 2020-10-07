@@ -8,7 +8,7 @@ from flaskforum.models import Question
 def home():
     page = request.args.get('page', 1, type=int)
     questions = Question.query.order_by(
-        Question.date_added.desc()).paginate(page=page, per_page=5)
+        Question.date_added.desc()).paginate(page=page, per_page=50)
     return render_template('blog.html', questions=questions)
 
 
