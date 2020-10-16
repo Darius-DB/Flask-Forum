@@ -62,25 +62,28 @@
 								Answer
 							</h4>
 
-							<p>
-								You must be authenticated for answering questions
-							</p>
+							
 
-							
-							{% if form.content.errors %}
-								{{ form.content(class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40  is-invalid") }}
-								<div class="invalid-feedback">
-									{% for error in form.content.errors %}
-										<span>{{ error }}</span>
-									{% endfor %}
-								</div>
+							{% if current_user.is_authenticated %}
+								{% if form.content.errors %}
+									{{ form.content(class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40  is-invalid") }}
+									<div class="invalid-feedback">
+										{% for error in form.content.errors %}
+											<span>{{ error }}</span>
+										{% endfor %}
+									</div>
+								{% else %}
+									{{ form.content(class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40", placeholder='Answer') }}
+								{% endif %}
+								
+								<!-- Button3 -->
+								
+								{{ form.submit(class='btn3 flex-c-m size31 txt11 trans-0-4') }}
 							{% else %}
-								{{ form.content(class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40", placeholder='Answer') }}
+								<p>
+									You must be authenticated for answering questions
+								</p>
 							{% endif %}
-							
-							<!-- Button3 -->
-							
-							{{ form.submit(class='btn3 flex-c-m size31 txt11 trans-0-4') }}
 						</form>
 
 						<div class="blo4 p-b-63">

@@ -36,3 +36,4 @@ from flaskforum.answers import routes
 from flaskforum.questions import routes
 from flaskforum.main import routes
 from flaskforum.errors import errors
+from flaskforum.api import routes
